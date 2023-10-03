@@ -70,10 +70,11 @@
 
             //9 1 12 67 45 23 15
 
-            int limitRndNumber = 100;
-            int seedRndNumber = 100;
-            int limitArrayNumber = 10;
-            int minArrayNumber = limitRndNumber;
+            int limitRndNumber = 100; // верхний предел лимита генератора псевдослучайных чисел
+            int seedRndNumber = 100; // число seed
+            int limitArrayNumber = 10; // лимит колличество элементов в инициализаторе массива
+            int minArrayNumber = limitRndNumber; // минимальное число массива 
+            int minArrayNumberIndex; // индекс минимального элемента в массиве
             int arrayBufferNumber;
             
             int[] rndArray = new int[limitArrayNumber];
@@ -95,17 +96,14 @@
                 if (rndArray[i] < minArrayNumber)
                 {
                     minArrayNumber = (rndArray[i]);
+                    minArrayNumberIndex = i;
                 }
             }
 
             arrayBufferNumber = minArrayNumber; // записываем значение буфферной переменной равное значению переменной минимального числа
 
-            if (minArrayNumber != rndArray[0]) // если минимальное число не является первым в массиве - выполняется цикл по смене местами нулевого индекса и индекса с минимальным числом массива
+            if (minArrayNumber != rndArray[0]) // если минимальное число не является первым в массиве - выполняется смена местами нулевого индекса массива и индекса значения элемента массива с минимальным числом массива
             {
-                for (int i = 0; i < limitArrayNumber; i++)
-                {
-                    
-                }
 
             }
 
