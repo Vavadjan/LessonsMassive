@@ -82,12 +82,18 @@ namespace LessonsMassive
 
             //9 1 12 67 45 23 15
 
+
+
+
+
+
+
             int limitRndNumber = 100; // верхний предел лимита генератора псевдослучайных чисел
             int seedRndNumber = 100; // число seed
             int limitArrayNumber = 10; // лимит колличество элементов в инициализаторе массива
-            int minArrayNumber = limitRndNumber; // минимальное число массива 
+            int minArrayNumber = Int32.MaxValue; // минимальное число массива 
             int minArrayNumberIndex = 0; // индекс минимального элемента в массиве
-            int arrayBufferNumber;
+            int arrayBufferNumber; // буфер для временного хранения числа во время перемещения
             
             int[] rndArray = new int[limitArrayNumber];
 
@@ -99,31 +105,32 @@ namespace LessonsMassive
                 Console.Write(rndArray[i] + " ");
             }
 
-            Console.WriteLine("\n");
-
             //96 15 66 90 35 94 71 61 34 14
 
-            for (int i = 0; i < limitArrayNumber; i++) // находим минимальное число в массиве
+          for (int x = 0; x < limitArrayNumber; x++)
             {
-                if (rndArray[i] < minArrayNumber)
+                Console.WriteLine("\n");
+                minArrayNumber = Int32.MaxValue;
+
+                for (int i = 0 + x; i < limitArrayNumber; i++)
                 {
-                    minArrayNumber = (rndArray[i]);
-                    minArrayNumberIndex = i;
+                    if (rndArray[i] < minArrayNumber)
+                    {
+                        minArrayNumber = (rndArray[i]);
+                        minArrayNumberIndex = i;
+                    }
                 }
+
+                if (minArrayNumber != rndArray[x])
+                {
+                    arrayBufferNumber = rndArray[minArrayNumberIndex];
+                    rndArray[minArrayNumberIndex] = rndArray[x];
+                    rndArray[x] = minArrayNumber;
+                }
+
+                Console.WriteLine("наименьшее число среди оставшихся - " + minArrayNumber);
+                ShowArray(limitArrayNumber, rndArray);
             }
-
-            //arrayBufferNumber = minArrayNumber; // записываем значение буфферной переменной равное значению переменной минимального числа
-
-            if (minArrayNumber != rndArray[0]) // если минимальное число не является первым в массиве - выполняется смена местами нулевого индекса массива и индекса значения элемента массива с минимальным числом массива
-            {
-                arrayBufferNumber = rndArray[minArrayNumberIndex];
-                rndArray[minArrayNumberIndex] = rndArray[0];
-                rndArray[0] = minArrayNumber;
-            }
-
-            ShowArray(limitArrayNumber, rndArray); 
-
         }
-
     }
 }
