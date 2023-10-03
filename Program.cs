@@ -128,7 +128,8 @@ namespace LessonsMassive
                     rndArray[x] = minArrayNumber;
                 }
 
-                Console.WriteLine("наименьшее число среди оставшихся - " + minArrayNumber);
+                Console.WriteLine("наименьшее число среди оставшихся - " minArrayNumber);
+                Console.WriteLine("\n");
                 ShowArray(limitArrayNumber, rndArray);
             }
         }
