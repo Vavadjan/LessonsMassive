@@ -1,4 +1,6 @@
-﻿namespace LessonsMassive
+﻿using System.Threading.Channels;
+
+namespace LessonsMassive
 {
     internal class Program
     {
@@ -11,6 +13,16 @@
             Recursion(i);
             }
 
+        }
+
+        static void ShowArray(int limitArrayNumber, int[] rndArray)
+        {
+            for (int i = 0; i < limitArrayNumber; i++)
+            {
+                Console.Write(rndArray[i] + " ");
+            }  
+            
+            
         }
 
 
@@ -74,7 +86,7 @@
             int seedRndNumber = 100; // число seed
             int limitArrayNumber = 10; // лимит колличество элементов в инициализаторе массива
             int minArrayNumber = limitRndNumber; // минимальное число массива 
-            int minArrayNumberIndex; // индекс минимального элемента в массиве
+            int minArrayNumberIndex = 0; // индекс минимального элемента в массиве
             int arrayBufferNumber;
             
             int[] rndArray = new int[limitArrayNumber];
@@ -100,12 +112,16 @@
                 }
             }
 
-            arrayBufferNumber = minArrayNumber; // записываем значение буфферной переменной равное значению переменной минимального числа
+            //arrayBufferNumber = minArrayNumber; // записываем значение буфферной переменной равное значению переменной минимального числа
 
             if (minArrayNumber != rndArray[0]) // если минимальное число не является первым в массиве - выполняется смена местами нулевого индекса массива и индекса значения элемента массива с минимальным числом массива
             {
-
+                arrayBufferNumber = rndArray[minArrayNumberIndex];
+                rndArray[minArrayNumberIndex] = rndArray[0];
+                rndArray[0] = minArrayNumber;
             }
+
+            ShowArray(limitArrayNumber, rndArray); 
 
         }
 
